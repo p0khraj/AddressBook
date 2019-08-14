@@ -48,8 +48,8 @@ public class PersonRepositoryImpl implements PersonRepository {
 	 
 	public List<Person> getPersonById(int id) throws ClassNotFoundException, SQLException {
 		
-	List<Person> things = DbConfig.getHandle().createQuery("select * from things where id in (<ids>)")
-		     .bindList("ids", 1, 2, 3)
+	List<Person> things = DbConfig.getHandle().createQuery("select * from person where id: id")
+		     bind(0, id)
 		     .mapTo(Person.class)
 		     .list();
 
